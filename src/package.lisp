@@ -1,8 +1,12 @@
 (defpackage portaudio
-  (:use :cl :cffi :alexandria :ffa)
-  (:nicknames #:pa)
+  (:use :cl :cffi :ffa)
+  (:nicknames :pa)
   (:documentation
    "This package contains bindings to @a[http://portaudio.com/]{PortAudio}. PortAudio is a free, cross-platform, open-source, audio I/O library.
+
+Binary PortAudio packages can be founded here: 
+@a{http://planet.plt-scheme.org/display.ss?package=portaudio.plt&owner=clements} -> source browse -> directories lib
+
 @begin[Installation and Usage]{section}
 @begin{pre}
 git clone --depth 1 
