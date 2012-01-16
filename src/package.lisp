@@ -9,7 +9,7 @@ Binary PortAudio packages can be founded here:
 
 @begin[Installation and Usage]{section}
 @begin{pre}
-git clone --depth 1 
+git clone --depth 1 https://github.com/filonenko-mikhail/cl-portaudio.git
 emacs
 M+x slime
   (pushnew \"path/to/cl-portaudio\" asdf:*central-registry*)

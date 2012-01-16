@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<documentation single-page-p="yes" index-title="CL-PortAudio references" css="index.css" heading="CL-PortAudio"><package name="portaudio" id="portaudio"><documentation-string>This package contains bindings to <a a="http://portaudio.com/">PortAudio</a>. PortAudio is a free, cross-platform, open-source, audio I/O library.<section section="Installation and Usage"><pre>
-git clone --depth 1 
+<documentation single-page-p="yes" index-title="CL-PortAudio references" css="index.css" heading="CL-PortAudio"><package name="portaudio" id="portaudio"><documentation-string>This package contains bindings to <a a="http://portaudio.com/">PortAudio</a>. PortAudio is a free, cross-platform, open-source, audio I/O library.<break/>
+Binary PortAudio packages can be founded here: <a>http://planet.plt-scheme.org/display.ss?package=portaudio.plt&amp;owner=clements</a> -&gt; source browse -&gt; directories lib<break/><section section="Installation and Usage"><pre>
+git clone --depth 1 https://github.com/filonenko-mikhail/cl-portaudio.git
 emacs
 M+x slime
   (pushnew "path/to/cl-portaudio" asdf:*central-registry*)
