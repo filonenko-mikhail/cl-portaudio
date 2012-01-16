@@ -3,6 +3,8 @@
 
 (define-foreign-library libportaudio
   (:unix (:or "libportaudio.so.2" "libportaudio.so"))
+  ((:or :win32 :x86-64) (:or "libportaudio" "libportaudio-2" "portaudio" "portaudio_x64" "portaudio_x86_64"))
+  ((:or :win32 :x86) (:or "libportaudio" "libportaudio-2" "portaudio" "portaudio_x86"))
   (t (:default "libportaudio")))
 
 (use-foreign-library libportaudio)
