@@ -1,0 +1,9 @@
+*.fasl
+*.aux
+*.idx
+*.ild
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
