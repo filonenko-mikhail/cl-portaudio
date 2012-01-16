@@ -1,6 +1,6 @@
 CL-PortAudio
 
-This package contains bindings to @a[http://portaudio.com/]{PortAudio}. PortAudio is a free, cross-platform, open-source, audio I/O library.
+This package contains bindings to http://portaudio.com/. PortAudio is a free, cross-platform, open-source, audio I/O library.
 
 See doc/documentation.pdf|index.html or WIKI.
 
