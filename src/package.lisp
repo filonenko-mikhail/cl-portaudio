@@ -12,7 +12,6 @@ Binary PortAudio packages can be founded here:
 git clone --depth 1 https://github.com/filonenko-mikhail/cl-portaudio.git
 emacs
 M+x slime
-  (pushnew \"path/to/cl-portaudio\" asdf:*central-registry*)
   (ql:quickload :cl-portaudio)
   (ql:quickload :cl-portaudio-tests)
   (portaudio-tests:test-read-write-echo)
