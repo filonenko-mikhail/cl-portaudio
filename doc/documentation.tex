@@ -37,7 +37,6 @@ Binary PortAudio packages can be founded here: \href{}{http://planet.plt-scheme.
 git clone --depth 1 https://github.com/filonenko-mikhail/cl-portaudio.git
 emacs
 M+x slime
-  (pushnew "path/to/cl-portaudio" asdf:*central-registry*)
   (ql:quickload :cl-portaudio)
   (ql:quickload :cl-portaudio-tests)
   (portaudio-tests:test-read-write-echo)\end{verbatim}\section{Example} \label{d0d0e0e0e0e1}
@@ -76,10 +75,10 @@ M+x slime
     (format t "~%=== Wire on. Will run ~D seconds . ===~%" +seconds+) 
     (with-default-audio-stream (astream +num-channels+ +num-channels+ :sample-format +sample-format+ :sample-rate +sample-rate+ :frames-per-buffer +frames-per-buffer+) 
       (dotimes (i (round (/ (* +seconds+ +sample-rate+) +frames-per-buffer+)))
-        (ignore-errors (write-stream astream
+         (write-stream astream
                                     (merge-channels-into-array astream
                                                                (separate-array-to-channels astream
-                                                                                           (read-stream astream)))))))))\end{verbatim}
+                                                                                           (read-stream astream))))))))\end{verbatim}
 
 
 
@@ -145,7 +144,7 @@ pa-stream
     \textsc{Return Values}
 
 
-On success array of data will be returned, or raises input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
+On success array of data will be returned, or :input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
 
 
 	
@@ -341,7 +340,7 @@ buffer
     \textsc{Return Values}
 
 
-On success NIL will be returned, or raises an error output-uderflow if additional output data was inserted after the previous call and before this call. 
+On success NIL will be returned, or :output-underflowed if additional output data was inserted after the previous call and before this call. 
 
 
 	
@@ -460,7 +459,7 @@ If you want to enumerate Devices belonging to a particular Host API you can coun
   ) 1)}. You can convert this Host API-specific index value to a global device-index value by calling \hyperref[portaudio__fun__host-api-device-index-to-device-index]{\texttt{host-api-device-index-to-device-index}}
   .
 
-Information about a Device is stored in a PaDeviceInfo structure. You can retrieve a pointer to a Devices's \hyperref[portaudio__class__device-info]{\texttt{device-info}}
+Information about a Device is stored in a PaDeviceInfo structure. You can retrieve \hyperref[portaudio__class__device-info]{\texttt{device-info}}
    structure by calling \hyperref[portaudio__fun__get-device-info]{\texttt{get-device-info}}
    with the Device's index as a parameter.
 
@@ -2155,7 +2154,7 @@ array
     \textsc{Return Values}
 
 
-NIL or, raises input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
+On success NIL will be returned, or :input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
 
 
 	
