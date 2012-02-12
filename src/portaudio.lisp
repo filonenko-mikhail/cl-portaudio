@@ -749,7 +749,7 @@ Read samples from an input stream. The function doesn't return until the entire 
 @arg[pa-stream]{A object of stream previously created with @fun{open-stream}.}
 
 @begin{return}
-On success array of data will be returned, or raises input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
+On success array of data will be returned, or :input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
 @end{return}
 "
   (let* ((sample-format (pa-stream-input-sample-format pa-stream))
@@ -759,7 +759,7 @@ On success array of data will be returned, or raises input-overflowed if input d
     (when (and sample-format
                channel-count)
       (with-pointer-to-array (array pointer sample-format (* channel-count frames) :copy-out)
-        (raise-if-error (%read-stream pa-stream pointer frames)))
+         (%read-stream pa-stream pointer frames))
       array)))
 (export 'read-stream)
 
@@ -807,7 +807,7 @@ Vector of data, that can be used with @fun{write-stream}.
 @arg[array]{Simple array with has element-type equal to sample-format from @fun{open-stream}. Size of array equal to @code{(* frames-per-buffer channel-count)}.}
 
 @begin{return}
-NIL or, raises input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
+On success NIL will be returned, or :input-overflowed if input data was discarded by PortAudio after the previous call and before this call. 
 @end{return}"
   (let* ((sample-format (pa-stream-input-sample-format pa-stream))
          (frames (pa-stream-frames-per-buffer pa-stream))
@@ -815,7 +815,7 @@ NIL or, raises input-overflowed if input data was discarded by PortAudio after t
     (when (and sample-format
                channel-count)
       (with-pointer-to-array (array pointer sample-format (* channel-count frames) :copy-out)
-        (raise-if-error (%read-stream pa-stream pointer frames))))))
+        (%read-stream pa-stream pointer frames)))))
 (export 'read-stream-into-array)
 
 (defcfun ("Pa_WriteStream" %write-stream) pa-error (pa-stream p-pa-stream)
@@ -828,7 +828,7 @@ NIL or, raises input-overflowed if input data was discarded by PortAudio after t
 @arg[buffer]{A array of sample frames. The buffer contains samples in the format specified by the @code{(stream-parameters-sample-format output-parameters)} field used to open the stream, and the number of channels specified by @code{(stream-parameters-num-channels output-parameters)}.}
 
 @begin{return}
-On success NIL will be returned, or raises an error output-uderflow if additional output data was inserted after the previous call and before this call. 
+On success NIL will be returned, or :output-underflowed if additional output data was inserted after the previous call and before this call. 
 @end{return}
 "
   (let* ((sample-format (pa-stream-input-sample-format pa-stream))
@@ -837,7 +837,7 @@ On success NIL will be returned, or raises an error output-uderflow if additiona
     (when (and sample-format
                channel-count)
       (with-pointer-to-array (buffer pointer sample-format (* channel-count frames) :copy-in)
-        (raise-if-error (%write-stream pa-stream pointer frames))))))
+        (%write-stream pa-stream pointer frames)))))
 
 (export 'write-stream)
 

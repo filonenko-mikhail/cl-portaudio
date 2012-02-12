@@ -34,10 +34,10 @@ M+x slime
     (format t \"~%=== Wire on. Will run ~D seconds . ===~%\" +seconds+) 
     (with-default-audio-stream (astream +num-channels+ +num-channels+ :sample-format +sample-format+ :sample-rate +sample-rate+ :frames-per-buffer +frames-per-buffer+) 
       (dotimes (i (round (/ (* +seconds+ +sample-rate+) +frames-per-buffer+)))
-        (ignore-errors (write-stream astream
+         (write-stream astream
                                     (merge-channels-into-array astream
                                                                (separate-array-to-channels astream
-                                                                                           (read-stream astream)))))))))
+                                                                                           (read-stream astream))))))))
 @end{pre}
 
 @aboutfun{with-audio}
@@ -112,7 +112,7 @@ Although each Device conceptually belongs to a specific Host API, most PortAudio
 
 If you want to enumerate Devices belonging to a particular Host API you can count between 0 and @code{(- (@fun{host-api-info-device-count}) 1)}. You can convert this Host API-specific index value to a global device-index value by calling @fun{host-api-device-index-to-device-index}.
 
-Information about a Device is stored in a PaDeviceInfo structure. You can retrieve a pointer to a Devices's @class{device-info} structure by calling @fun{get-device-info} with the Device's index as a parameter.
+Information about a Device is stored in a PaDeviceInfo structure. You can retrieve @class{device-info} structure by calling @fun{get-device-info} with the Device's index as a parameter.
 
 You can retrieve the indices of the global default input and output devices using @fun{get-default-input-device} and @fun{get-default-output-device}. Default Devices for each Host API are stored in the Host API's @class{host-api-info} structures.
 

@@ -24,7 +24,7 @@
       (format t "~%=== Wire on. Will run ~D seconds . ===~%" +seconds+)
       (with-audio-stream (astream input-parameters output-parameters :sample-rate +sample-rate+ :frames-per-buffer +frames-per-buffer+ :stream-flags (:clip-off))
         (dotimes (i (round (/ (* +seconds+ +sample-rate+) +frames-per-buffer+)))
-          (ignore-errors (write-stream astream (read-stream astream))))))))
+          (write-stream astream (read-stream astream)))))))
 (export 'test-read-write-echo)
 
 (defun test-read-write-converted-echo ()
@@ -33,8 +33,8 @@
     (format t "~%=== Wire on. Will run ~D seconds . ===~%" +seconds+)
     (with-default-audio-stream (astream +num-channels+ +num-channels+ :sample-format +sample-format+ :sample-rate +sample-rate+ :frames-per-buffer +frames-per-buffer+)
       (dotimes (i (round (/ (* +seconds+ +sample-rate+) +frames-per-buffer+)))
-        (ignore-errors (write-stream astream
-                                     (merge-channels-into-array astream
-                                                                (separate-array-to-channels astream
-                                                                                            (read-stream astream)))))))))
+        (write-stream astream
+                      (merge-channels-into-array astream
+                                                 (separate-array-to-channels astream
+                                                                             (read-stream astream))))))))
 (export 'test-read-write-converted-echo)
