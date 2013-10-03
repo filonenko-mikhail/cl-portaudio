@@ -208,7 +208,7 @@
   (:simple-parser p-host-error-info))
 
 (defmethod translate-from-foreign (value (type p-host-error-info))
-  (unless (null-pointer value)
+  (unless (null-pointer-p value)
     (make-instance 'host-error-info :pointer value)))
 
 (defcfun ("Pa_GetLastHostErrorInfo" %get-last-host-error-info) p-host-error-info)
