@@ -831,9 +831,9 @@ On success NIL will be returned, or :input-overflowed if input data was discarde
 On success NIL will be returned, or :output-underflowed if additional output data was inserted after the previous call and before this call. 
 @end{return}
 "
-  (let* ((sample-format (pa-stream-input-sample-format pa-stream))
+  (let* ((sample-format (pa-stream-output-sample-format pa-stream))
          (frames (pa-stream-frames-per-buffer pa-stream))
-         (channel-count (pa-stream-input-channels pa-stream)))
+         (channel-count (pa-stream-output-channels pa-stream)))
     (when (and sample-format
                channel-count)
       (with-pointer-to-array (buffer pointer sample-format (* channel-count frames) :copy-in)
