@@ -25,7 +25,6 @@
       (with-audio-stream (astream input-parameters output-parameters :sample-rate +sample-rate+ :frames-per-buffer +frames-per-buffer+ :stream-flags (:clip-off))
         (dotimes (i (round (/ (* +seconds+ +sample-rate+) +frames-per-buffer+)))
           (write-stream astream (read-stream astream)))))))
-(export 'test-read-write-echo)
 
 (defun test-read-write-converted-echo ()
   "Record input into an array; Separate array to channels; Merge channels into array; Play last array."
@@ -37,4 +36,3 @@
                       (merge-channels-into-array astream
                                                  (separate-array-to-channels astream
                                                                              (read-stream astream))))))))
-(export 'test-read-write-converted-echo)
