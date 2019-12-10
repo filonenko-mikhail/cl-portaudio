@@ -6,7 +6,7 @@ Installation:
 (ql:quickload :cl-portaudio)
 
 Test:
-(ql:quickload :cl-portaudio-tests)
+(ql:quickload :cl-portaudio/tests)
 (portaudio-tests:test-read-write-echo)
 
 Depends on:
