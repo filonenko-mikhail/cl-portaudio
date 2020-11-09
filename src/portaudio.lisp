@@ -69,10 +69,7 @@
   (cond
     ((numberp err)
      (if (<= -10000 err -9972)
-         (let ((err-keyword (foreign-enum-keyword 'pa-error err)))
-           (if (not (eql err-keyword  :no-error))
-               (error err-keyword)
-               err))
+         (error (foreign-enum-keyword 'pa-error err))
          err))
     (t
      (if (not (eql err :no-error))
