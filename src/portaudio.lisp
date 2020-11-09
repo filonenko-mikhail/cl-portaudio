@@ -68,7 +68,7 @@
   "Check err and raise condition if it is needed"
   (cond
     ((numberp err)
-     (if (and (> -10000 err) (< -9000 err))
+     (if (<= -10000 err -9972)
          (let ((err-keyword (foreign-enum-keyword 'pa-error err)))
            (if (not (eql err-keyword  :no-error))
                (error err-keyword)
